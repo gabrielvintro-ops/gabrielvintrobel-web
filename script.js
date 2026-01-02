@@ -1,44 +1,37 @@
-// script.js — versió funcional amb filtres i render
+// script.js — funcional: bios + filtres + enllaços + miniatures
 window.addEventListener('DOMContentLoaded', async () => {
-  const log = (...args) => console.log('[GVB]', ...args);
+  const $ = (sel) => document.querySelector(sel);
 
-  // Referències del DOM
-  const bioShortEl = document.getElementById('bioShort');
-  const bioLongEl  = document.getElementById('bioLong');
-  const filtersEl  = document.getElementById('filters');
-  const lib        = document.getElementById('mediaLibrary');
+  const bioShortEl = $('#bioShort');
+  const bioLongEl  = $('#bioLong');
+  const filtersEl  = $('#filters');
+  const lib        = $('#mediaLibrary');
 
-  // Any al footer si hi és
-  document.getElementById('year')?.append(new Date().getFullYear());
+  // Any al footer, si existeix
+  $('#year')?.append(new Date().getFullYear());
 
-  // Bios de prova (substitueix-les quan vulguis per les teves definitives)
+  // 1) BIOS — SUBSTITUEIX aquests textos pels teus definitius si vols
   if (bioShortEl) bioShortEl.textContent =
-    'He repartit la meva vida professional entre la interpretació i la docència...';
+    'Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.';
   if (bioLongEl)  bioLongEl.textContent  =
-    'Biografia extensa validada...';
+    'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.';
 
-  // Carrega media.json
+  // 2) Carrega el catàleg
   let media;
   try {
     const res = await fetch('media.json', { cache: 'no-store' });
     media = await res.json();
-    log('media.json carregat', media);
-  } catch (err) {
-    console.error('ERROR carregant media.json', err);
+  } catch (e) {
     lib.innerHTML = `<p class="muted">No s’ha pogut carregar <code>media.json</code>.</p>`;
     return;
   }
-
   const audio     = Array.isArray(media.audio)     ? media.audio     : [];
   const video     = Array.isArray(media.video)     ? media.video     : [];
   const playlists = Array.isArray(media.playlists) ? media.playlists : [];
 
-  log(`Elements: audio=${audio.length}, video=${video.length}, playlists=${playlists.length}`);
+  // 3) Filtres
+  const state = { type:'all', year:'all', role:'all', playlist:'all' };
 
-  // Estat de filtres
-  const state = { type: 'all', year: 'all', role: 'all', playlist: 'all' };
-
-  // Dibuixa filtres
   if (filtersEl) {
     const years = [...new Set([...audio, ...video].map(i => i.year ?? '—'))]
       .filter(v => v !== undefined && v !== null)
@@ -84,8 +77,19 @@ window.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Predicats de filtre i render
-  function matches(it) {
+  // Helpers per enllaços
+  const soundcloudPageUrl = (embedUrl) => {
+    // l'embed és "https://w.soundcloud.com/player/?url=ENCODED_ORIGINAL"
+    try {
+      const u = new URL(embedUrl);
+      const original = u.searchParams.get('url');  // ex: https://soundcloud.com/.../sets/...
+      if (original) return decodeURIComponent(original);
+    } catch(e){}
+    return null;
+  };
+  const youtubeWatchUrl = (id) => `https://youtu.be/${id}`;
+
+  const matches = (it) => {
     if (state.type !== 'all') {
       const t = it.type || (it.embed || it.src ? 'audio' : 'video');
       if (t !== state.type) return false;
@@ -103,44 +107,46 @@ window.addEventListener('DOMContentLoaded', async () => {
       if (!inPl) return false;
     }
     return true;
-  }
+  };
 
-  function card(it) {
+  const card = (it) => {
     const title = it.title || '(Sense títol)';
-    const meta  = [
-      it.subtitle ? `<em>${it.subtitle}</em>` : '',
+    const subtitle = it.subtitle ? `<div class="sub">${it.subtitle}</div>` : '';
+    const meta = [
       it.year ? `Any: ${it.year}` : '',
       it.role ? `Rol: ${it.role}` : '',
       Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
     ].filter(Boolean).join(' · ');
 
-    // Àudio (SoundCloud o arxiu local)
+    // enllaç “font” (SoundCloud / YouTube) i player embegut
+    let outLink = '';
+    let player = '';
     if (it.embed || it.src) {
-      const player = it.embed
-        ? `${it.embed}</iframe>`
-        : `<audio controlso>`;
-      return `
-        <article class="card audio">
-          <h3>${title}</h3>
-          <div class="meta">${meta}</div>
-          ${player}
-          ${it.program_notes ? `<p class="notes">${it.program_notes}</p>` : ''}
-        </article>`;
-    }
-
-    // Vídeo (YouTube)
-    if (it.platform === 'YouTube' && it.video_id) {
+      const sc = it.embed ? soundcloudPageUrl(it.embed) : null;
+      outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
+      player = it.embed
+        ? `<iframe width="100%" height="166" allowrc}</audio>`;
+    } else if (it.platform === 'YouTube' && it.video_id) {
+      const watch = youtubeWatchUrl(it.video_id);
+      outLink = `<a class="btn" hrefTube</a>`;
       const url = `https://www.youtube.com/embed/${it.video_id}`;
-      return `
-        <article class="card video">
-          <h3>${title}</h3>
-          <div class="meta">${meta}</div>
-          ${url}</iframe>
-        </article>`;
-    }
+      player = `<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-pictureil}`
+      : '';
 
-    return '';
-  }
+    return `
+      <article class="card">
+        ${thumb}
+        <h3>${title}</h3>
+        ${subtitle}
+        <div class="meta">${meta}</div>
+        ${player}
+        <div class="actions">
+          ${outLink}
+        </div>
+        ${it.program_notes ? `<p class="notes">${it.program_notes}</p>` : ''}
+      </article>
+    `;
+  };
 
   function render() {
     const items = [
@@ -155,4 +161,3 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   render();
 });
-``
