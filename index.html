@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -29,7 +28,7 @@
     .actions{margin-top:8px}
     .btn{display:inline-block;padding:6px 10px;border-radius:8px;background:#222;color:#fff;text-decoration:none;font-size:13px}
     .btn:hover{background:#444}
-    .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:var(--muted)}
+    .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:#muted}
   </style>
 </head>
 <body>
@@ -63,258 +62,252 @@
     <small>© <span id="year"></span> Gabriel Vintró Bel</small>
   </footer>
 
-  <!-- DADES incrustades: tot el teu catàleg -->
- 
-<script>
-const MEDIA = {
-  "audio": [
-    {"id":"sc-mostra-1-primera-part","title":"Mostra 1 — Primera part","year":2014,"tags":["SoundCloud","Set"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/mostra-1"},
-    {"id":"sc-mostra-2-segona-part","title":"Mostra 2 — Segona part","year":2019,"tags":["SoundCloud","Set"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/mostra-2"},
-    {"id":"sc-piano-tercera-part","title":"Piano","year":2018,"tags":["SoundCloud","Set","Piano"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/piano"},
-    {"id":"sc-quartet1-quarta-part","title":"Quartet nº1","subtitle":"All You Need is Loaf","year":2012,"tags":["SoundCloud","Set","String Ensemble","Quartet"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/all-you-need-is-loaf-string"},
-    {"id":"sc-strings-cinquena-part","title":"Movies & Tv's Scoring","year":2020,"tags":["SoundCloud","Set","String Ensemble","Scoring","Film"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/strings"},
-    {"id":"sc-4-violins-2022","title":"4 peces per a 4 violins","year":2022,"tags":["SoundCloud","Set","String Ensemble","Violin"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/4-peces-per-a-4-violins"},
-    {"id":"sc-suite-orquestra-2023","title":"Suite per a Orquestra de Cordes","year":2023,"tags":["SoundCloud","Set","String Ensemble","Suite"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/suite-per-a-orquestra-de-cordes"},
-    {"id":"sc-estiu-2021","title":"Estiu 2021","year":2021,"tags":["SoundCloud","Set","Summer"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/estiu-2021"},
-    {"id":"sc-tardor-2021","title":"Tardor 2021","year":2021,"tags":["SoundCloud","Set","Autumn"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/tardor-2021"},
-    {"id":"sc-miscelania","title":"Miscelània","year":"—","tags":["SoundCloud","Set","Miscelània"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/miscelania"},
-    {"id":"sc-akademic-quartet-2021","title":"Akademic Quartet","year":2021,"tags":["SoundCloud","Set","String Ensemble","Quartet"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/akademic-quartet"}
-  ],
+  <!-- ===================== DADES INCRUSTADES ===================== -->
+  <script>
+  const MEDIA = {
+    "audio": [
+      {"id":"sc-mostra-1-primera-part","title":"Mostra 1 — Primera part","year":2014,"tags":["SoundCloud","Set"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/mostra-1"},
+      {"id":"sc-mostra-2-segona-part","title":"Mostra 2 — Segona part","year":2019,"tags":["SoundCloud","Set"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/mostra-2"},
+      {"id":"sc-piano-tercera-part","title":"Piano","year":2018,"tags":["SoundCloud","Set","Piano"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/piano"},
+      {"id":"sc-quartet1-quarta-part","title":"Quartet nº1","subtitle":"All You Need is Loaf","year":2012,"tags":["SoundCloud","Set","String Ensemble","Quartet"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/all-you-need-is-loaf-string"},
+      {"id":"sc-strings-cinquena-part","title":"Movies & Tv's Scoring","year":2020,"tags":["SoundCloud","Set","String Ensemble","Scoring","Film"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/strings"},
+      {"id":"sc-4-violins-2022","title":"4 peces per a 4 violins","year":2022,"tags":["SoundCloud","Set","String Ensemble","Violin"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/4-peces-per-a-4-violins"},
+      {"id":"sc-suite-orquestra-2023","title":"Suite per a Orquestra de Cordes","year":2023,"tags":["SoundCloud","Set","String Ensemble","Suite"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/suite-per-a-orquestra-de-cordes"},
+      {"id":"sc-estiu-2021","title":"Estiu 2021","year":2021,"tags":["SoundCloud","Set","Summer"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/estiu-2021"},
+      {"id":"sc-tardor-2021","title":"Tardor 2021","year":2021,"tags":["SoundCloud","Set","Autumn"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/tardor-2021"},
+      {"id":"sc-miscelania","title":"Miscelània","year":"—","tags":["SoundCloud","Set","Miscelània"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/miscelania"},
+      {"id":"sc-akademic-quartet-2021","title":"Akademic Quartet","year":2021,"tags":["SoundCloud","Set","String Ensemble","Quartet"],"role":"composer","embed":"https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gabrielvintrobel/sets/akademic-quartet"}
+    ],
 
-  "video": [
-    {
-      "id": "yt-ShSuICU6Esw",
-      "title": "In Memoriam",
-      "platform": "YouTube",
-      "video_id": "ShSuICU6Esw",
-      "year": 2025,
-      "tags": ["String Ensemble"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-dNCnvGd3KTw",
-      "title": "T.O.C.",
-      "platform": "YouTube",
-      "video_id": "dNCnvGd3KTw",
-      "year": 2024,
-      "tags": ["String Ensemble", "Dance", "Scoring"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-p3EdiVq3DGY",
-      "title": "Film Credits",
-      "platform": "YouTube",
-      "video_id": "p3EdiVq3DGY",
-      "year": 2017,
-      "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-1hkSzPfbCZA",
-      "title": "Descobriment",
-      "platform": "YouTube",
-      "video_id": "1hkSzPfbCZA",
-      "year": 2025,
-      "tags": ["Symphonic", "Electronic", "Original Soundtrack", "Scoring", "Film"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-gOe2f8o_aDE",
-      "title": "Profundum Maris",
-      "platform": "YouTube",
-      "video_id": "gOe2f8o_aDE",
-      "year": 2023,
-      "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-ALpaGh8uO1A",
-      "title": "Remake",
-      "platform": "YouTube",
-      "video_id": "ALpaGh8uO1A",
-      "year": 2019,
-      "tags": ["Electronic", "Original Soundtrack", "Scoring", "Film", "Dance", "Piano"],
-      "role": "composer"
-    },
-    {
-      "id": "yt-24u0cKLxJfk",
-      "title": "Tot està bé",
-      "platform": "YouTube",
-      "video_id": "24u0cKLxJfk",
-      "year": 2017,
-      "tags": ["Scoring", "Original Soundtrack", "Dance", "Piano"],
-      "role": "composer"
-    },
+    "video": [
+      {
+        "id": "yt-ShSuICU6Esw",
+        "title": "In Memoriam",
+        "platform": "YouTube",
+        "video_id": "ShSuICU6Esw",
+        "year": 2025,
+        "tags": ["String Ensemble"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-dNCnvGd3KTw",
+        "title": "T.O.C.",
+        "platform": "YouTube",
+        "video_id": "dNCnvGd3KTw",
+        "year": 2024,
+        "tags": ["String Ensemble", "Dance", "Scoring"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-p3EdiVq3DGY",
+        "title": "Film Credits",
+        "platform": "YouTube",
+        "video_id": "p3EdiVq3DGY",
+        "year": 2017,
+        "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-1hkSzPfbCZA",
+        "title": "Descobriment",
+        "platform": "YouTube",
+        "video_id": "1hkSzPfbCZA",
+        "year": 2025,
+        "tags": ["Symphonic", "Electronic", "Original Soundtrack", "Scoring", "Film"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-gOe2f8o_aDE",
+        "title": "Profundum Maris",
+        "platform": "YouTube",
+        "video_id": "gOe2f8o_aDE",
+        "year": 2023,
+        "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-ALpaGh8uO1A",
+        "title": "Remake",
+        "platform": "YouTube",
+        "video_id": "ALpaGh8uO1A",
+        "year": 2019,
+        "tags": ["Electronic", "Original Soundtrack", "Scoring", "Film", "Dance", "Piano"],
+        "role": "composer"
+      },
+      {
+        "id": "yt-24u0cKLxJfk",
+        "title": "Tot està bé",
+        "platform": "YouTube",
+        "video_id": "24u0cKLxJfk",
+        "year": 2017,
+        "tags": ["Scoring", "Original Soundtrack", "Dance", "Piano"],
+        "role": "composer"
+      },
 
-    { "id":"yt-SCotlfzQwjk",  "platform":"YouTube", "video_id":"SCotlfzQwjk",  "role":"interpreter" },
-    { "id":"yt-tGIs4fO1bkU",  "platform":"YouTube", "video_id":"tGIs4fO1bkU",  "role":"interpreter" },
-    { "id":"yt-FgaGKU8g37U",  "platform":"YouTube", "video_id":"FgaGKU8g37U",  "role":"interpreter" },
-    { "id":"yt-1kA6J09VhJ0",  "platform":"YouTube", "video_id":"1kA6J09VhJ0",  "role":"interpreter" },
-    { "id":"yt-w1OutUPDCM0",  "platform":"YouTube", "video_id":"w1OutUPDCM0",  "role":"interpreter" },
-    { "id":"yt-ue4N8joZHoA",  "platform":"YouTube", "video_id":"ue4N8joZHoA",  "role":"interpreter" },
-    { "id":"yt-JfA3NRU4OcI",  "platform":"YouTube", "video_id":"JfA3NRU4OcI",  "role":"interpreter" },
-    { "id":"yt-zLogT099t4I",  "platform":"YouTube", "video_id":"zLogT099t4I",  "role":"interpreter" },
-    { "id":"yt-qEaLnddWubM",  "platform":"YouTube", "video_id":"qEaLnddWubM",  "role":"interpreter" }
-  ],
+      { "id":"yt-SCotlfzQwjk",  "platform":"YouTube", "video_id":"SCotlfzQwjk",  "role":"interpreter" },
+      { "id":"yt-tGIs4fO1bkU",  "platform":"YouTube", "video_id":"tGIs4fO1bkU",  "role":"interpreter" },
+      { "id":"yt-FgaGKU8g37U",  "platform":"YouTube", "video_id":"FgaGKU8g37U",  "role":"interpreter" },
+      { "id":"yt-1kA6J09VhJ0",  "platform":"YouTube", "video_id":"1kA6J09VhJ0",  "role":"interpreter" },
+      { "id":"yt-w1OutUPDCM0",  "platform":"YouTube", "video_id":"w1OutUPDCM0",  "role":"interpreter" },
+      { "id":"yt-ue4N8joZHoA",  "platform":"YouTube", "video_id":"ue4N8joZHoA",  "role":"interpreter" },
+      { "id":"yt-JfA3NRU4OcI",  "platform":"YouTube", "video_id":"JfA3NRU4OcI",  "role":"interpreter" },
+      { "id":"yt-zLogT099t4I",  "platform":"YouTube", "video_id":"zLogT099t4I",  "role":"interpreter" },
+      { "id":"yt-qEaLnddWubM",  "platform":"YouTube", "video_id":"qEaLnddWubM",  "role":"interpreter" }
+    ],
 
-  "playlists": [
-    {"id":"audio-string-ensemble","title":"String Ensemble — Audio","description":"Selecció d’àudios per a conjunt de corda.","items":["sc-strings-cinquena-part","sc-quartet1-quarta-part","sc-4-violins-2022","sc-akademic-quartet-2021","sc-suite-orquestra-2023"]},
-    {"id":"audio-piano","title":"Piano — Audio","description":"Selecció d’àudios per a piano.","items":["sc-piano-tercera-part"]},
-    {"id":"audio-scoring-film","title":"Scoring & Film — Audio","description":"Selecció d’àudios relacionats amb banda sonora i cinema.","items":["sc-strings-cinquena-part","sc-mostra-1-primera-part","sc-mostra-2-segona-part","sc-quartet1-quarta-part"]},
-    {"id":"audio-miscelania","title":"Miscelània — Audio","description":"Selecció d’àudios diversos (miscel·lània).","items":["sc-miscelania"]}
-  ]
-};
-</script>
+    "playlists": [
+      {"id":"audio-string-ensemble","title":"String Ensemble — Audio","description":"Selecció d’àudios per a conjunt de corda.","items":["sc-strings-cinquena-part","sc-quartet1-quarta-part","sc-4-violins-2022","sc-akademic-quartet-2021","sc-suite-orquestra-2023"]},
+      {"id":"audio-piano","title":"Piano — Audio","description":"Selecció d’àudios per a piano.","items":["sc-piano-tercera-part"]},
+      {"id":"audio-scoring-film","title":"Scoring & Film — Audio","description":"Selecció d’àudios relacionats amb banda sonora i cinema.","items":["sc-strings-cinquena-part","sc-mostra-1-primera-part","sc-mostra-2-segona-part","sc-quartet1-quarta-part"]},
+      {"id":"audio-miscelania","title":"Miscelània — Audio","description":"Selecció d’àudios diversos (miscel·lània).","items":["sc-miscelania"]}
+    ]
+  };
+  </script>
+  <!-- ===================== FI DADES INCRUSTADES ===================== -->
 
-  
-<!-- JS incrustat: render + filtres (VERSIÓ DOM, SENSE innerHTML) -->
-<script>
-(function(){
-  const $ = (s)=>document.querySelector(s);
-  const lib = $('#mediaLibrary'), filtersEl = $('#filters');
-  const audio = MEDIA.audio||[], video = MEDIA.video||[], playlists = MEDIA.playlists||[];
-  document.getElementById('year')?.append(new Date().getFullYear());
+  <!-- ===================== JS: RENDER AMB DOM ===================== -->
+  <script>
+  (function(){
+    const $ = (s)=>document.querySelector(s);
+    const lib = $('#mediaLibrary'), filtersEl = $('#filters');
+    const audio = MEDIA.audio||[], video = MEDIA.video||[], playlists = MEDIA.playlists||[];
 
-  // Estat de filtres
-  const state = { type:'all', year:'all', role:'all', playlist:'all' };
-  const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
-    .filter(v => v !== undefined && v !== null)
-    .sort((a,b)=> String(b).localeCompare(String(a)));
+    // Any al footer
+    document.getElementById('year')?.append(new Date().getFullYear());
 
-  // Dibuixa filtres (aquí sí fem innerHTML, però no afecta els reproductors)
-  filtersEl.innerHTML = `
-    <label>Tipus
-      <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
-    </label>
-    <label>Any
-      <select id="fYear"><option value="all">Tots</option>${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select>
-    </label>
-    <label>Rol
-      <select id="fRole"><option value="all">Tots</option><option value="composer">Compositor</option><option value="interpreter">Intèrpret</option></select>
-    </label>
-    <label>Playlist
-      <select id="fPlaylist"><option value="all">Cap</option>${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}</select>
-    </label>`;
+    // BIOS (pots canviar textos directament a la secció "Sobre mi")
 
-  ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
-    document.getElementById(id).addEventListener('change', ()=>{
-      state.type=document.getElementById('fType').value;
-      state.year=document.getElementById('fYear').value;
-      state.role=document.getElementById('fRole').value;
-      state.playlist=document.getElementById('fPlaylist').value;
-      render();
+    // Estat filtres
+    const state = { type:'all', year:'all', role:'all', playlist:'all' };
+    const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
+      .filter(v => v !== undefined && v !== null)
+      .sort((a,b)=> String(b).localeCompare(String(a)));
+
+    // Dibuixa filtres
+    filtersEl.innerHTML = `
+      <label>Tipus
+        <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
+      </label>
+      <label>Any
+        <select id="fYear"><option value="all">Tots</option>${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select>
+      </label>
+      <label>Rol
+        <select id="fRole"><option value="all">Tots</option><option value="composer">Compositor</option><option value="interpreter">Intèrpret</option></select>
+      </label>
+      <label>Playlist
+        <select id="fPlaylist"><option value="all">Cap</option>${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}</select>
+      </label>`;
+
+    ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
+      document.getElementById(id).addEventListener('change', ()=>{
+        state.type=document.getElementById('fType').value;
+        state.year=document.getElementById('fYear').value;
+        state.role=document.getElementById('fRole').value;
+        state.playlist=document.getElementById('fPlaylist').value;
+        render();
+      });
     });
-  });
 
-  // Helpers
-  const scPage = (embedUrl)=>{ 
-    try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }
-    catch(e){ return null; }
-  };
-  const ytWatch = (id)=> `https://youtu.be/${id}`;
+    // Helpers d’enllaç
+    const scPage = (embedUrl)=>{ 
+      try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }
+      catch(e){ return null; }
+    };
+    const ytWatch = (id)=> `https://youtu.be/${id}`;
 
-  const matches = (it)=>{
-    if (state.type!=='all'){ 
-      const t = it.type || (it.embed||it.src ? 'audio':'video'); 
-      if (t!==state.type) return false; 
-    }
-    if (state.year!=='all'){ 
-      const y = it.year ?? '—'; 
-      if (String(y)!==String(state.year)) return false; 
-    }
-    if (state.role!=='all'){ 
-      const r = it.role || 'composer'; 
-      if (r!==state.role) return false; 
-    }
-    if (state.playlist!=='all'){ 
-      const inPl = playlists.some(pl=> pl.id===state.playlist && (pl.items||[]).includes(it.id)); 
-      if (!inPl) return false; 
-    }
-    return true;
-  };
+    const matches = (it)=>{
+      if (state.type!=='all'){ const t = it.type || (it.embed||it.src ? 'audio':'video'); if (t!==state.type) return false; }
+      if (state.year!=='all'){ const y = it.year ?? '—'; if (String(y)!==String(state.year)) return false; }
+      if (state.role!=='all'){ const r = it.role || 'composer'; if (r!==state.role) return false; }
+      if (state.playlist!=='all'){ const inPl = playlists.some(pl=> pl.id===state.playlist && (pl.items||[]).includes(it.id)); if (!inPl) return false; }
+      return true;
+    };
 
-  // ⚙️ CREA LES TARGETES AMB EL DOM (no innerHTML) — així els iframes es renderitzen sempre
-  function makeCard(it){
-    const art = document.createElement('article');
-    art.className = 'card';
+    // Crea targetes amb DOM (no innerHTML) perquè els iframes es pintin sempre
+    function makeCard(it){
+      const art = document.createElement('article');
+      art.className = 'card';
 
-    const h3 = document.createElement('h3');
-    h3.textContent = it.title || '(Sense títol)';
-    art.appendChild(h3);
+      const h3 = document.createElement('h3');
+      h3.textContent = it.title || '(Sense títol)';
+      art.appendChild(h3);
 
-    if (it.subtitle){
-      const sub = document.createElement('div');
-      sub.className = 'sub';
-      sub.textContent = it.subtitle;
-      art.appendChild(sub);
-    }
+      if (it.subtitle){
+        const sub = document.createElement('div');
+        sub.className = 'sub';
+        sub.textContent = it.subtitle;
+        art.appendChild(sub);
+      }
 
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    meta.textContent = [
-      it.year ? `Any: ${it.year}` : '',
-      it.role ? `Rol: ${it.role}` : '',
-      Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
-    ].filter(Boolean).join(' · ');
-    art.appendChild(meta);
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = [
+        it.year ? `Any: ${it.year}` : '',
+        it.role ? `Rol: ${it.role}` : '',
+        Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
+      ].filter(Boolean).join(' · ');
+      art.appendChild(meta);
 
-    // Player
-    if (it.embed || it.src){
-      if (it.embed){
+      // Player
+      if (it.embed || it.src){
+        if (it.embed){
+          const iframe = document.createElement('iframe');
+          iframe.width = '100%';
+          iframe.height = '166';
+          iframe.setAttribute('allow','autoplay');
+          iframe.setAttribute('frameborder','0');
+          iframe.src = it.embed;
+          art.appendChild(iframe);
+        } else {
+          const audioEl = document.createElement('audio');
+          audioEl.controls = true;
+          audioEl.src = it.src;
+          art.appendChild(audioEl);
+        }
+        // Botó SoundCloud
+        const sc = it.embed ? scPage(it.embed) : null;
+        if (sc){
+          const actions = document.createElement('div'); actions.className='actions';
+          const a = document.createElement('a'); a.className='btn'; a.href=sc; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a SoundCloud';
+          actions.appendChild(a); art.appendChild(actions);
+        }
+      } else if (it.platform==='YouTube' && it.video_id){
         const iframe = document.createElement('iframe');
         iframe.width = '100%';
-        iframe.height = '166';
-        iframe.setAttribute('allow','autoplay');
-        iframe.setAttribute('frameborder','0');
-        iframe.src = it.embed;
+        iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen','');
+        iframe.src = `https://www.youtube.com/embed/${it.video_id}`;
         art.appendChild(iframe);
-      } else {
-        const audioEl = document.createElement('audio');
-        audioEl.controls = true;
-        audioEl.src = it.src;
-        art.appendChild(audioEl);
-      }
-      // Botó SoundCloud
-      const sc = it.embed ? scPage(it.embed) : null;
-      if (sc){
+
         const actions = document.createElement('div'); actions.className='actions';
-        const a = document.createElement('a'); a.className='btn'; a.href=sc; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a SoundCloud';
+        const a = document.createElement('a'); a.className='btn'; a.href=`https://youtu.be/${it.video_id}`; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a YouTube';
         actions.appendChild(a); art.appendChild(actions);
       }
-    } else if (it.platform==='YouTube' && it.video_id){
-      const iframe = document.createElement('iframe');
-      iframe.width = '100%';
-      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      iframe.setAttribute('allowfullscreen','');
-      iframe.src = `https://www.youtube.com/embed/${it.video_id}`;
-      art.appendChild(iframe);
 
-      const actions = document.createElement('div'); actions.className='actions';
-      const a = document.createElement('a'); a.className='btn'; a.href=`https://youtu.be/${it.video_id}`; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a YouTube';
-      actions.appendChild(a); art.appendChild(actions);
+      return art;
     }
 
-    return art;
-  }
+    function render(){
+      lib.textContent = ''; // buida
+      const items = [
+        ...audio.map(a=>({...a, type:'audio'})),
+        ...video.map(v=>({...v, type:'video'}))
+      ].filter(matches);
 
-  function render(){
-    lib.textContent = ''; // buida
-    const items = [
-      ...audio.map(a=>({...a, type:'audio'})),
-      ...video.map(v=>({...v, type:'video'}))
-    ].filter(matches);
+      if (!items.length){
+        const p = document.createElement('p');
+        p.className = 'muted';
+        p.textContent = 'No hi ha contingut que coincideixi amb els filtres.';
+        lib.appendChild(p);
+        return;
+      }
 
-    if (!items.length){
-      const p = document.createElement('p');
-      p.className = 'muted';
-      p.textContent = 'No hi ha contingut que coincideixi amb els filtres.';
-      lib.appendChild(p); 
-      return;
+      items.forEach(it=> lib.appendChild(makeCard(it)));
     }
 
-    items.forEach(it=> lib.appendChild(makeCard(it)));
-  }
-
-  render();
-})();
-</script>
+    render();
+  })();
+  </script>
+  <!-- ===================== FI JS ===================== -->
+</body>
+</html>
