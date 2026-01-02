@@ -7,16 +7,16 @@ window.addEventListener('DOMContentLoaded', async () => {
   const filtersEl  = $('#filters');
   const lib        = $('#mediaLibrary');
 
-  // Any al footer, si existeix
+  // Any al footer
   $('#year')?.append(new Date().getFullYear());
 
-  // 1) BIOS — SUBSTITUEIX aquests textos pels teus definitius si vols
+  // BIOS (substitueix per la teva versió real quan vulguis)
   if (bioShortEl) bioShortEl.textContent =
     'Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.';
   if (bioLongEl)  bioLongEl.textContent  =
-    'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.';
+    'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria...';
 
-  // 2) Carrega el catàleg
+  // Carrega media.json
   let media;
   try {
     const res = await fetch('media.json', { cache: 'no-store' });
@@ -29,14 +29,12 @@ window.addEventListener('DOMContentLoaded', async () => {
   const video     = Array.isArray(media.video)     ? media.video     : [];
   const playlists = Array.isArray(media.playlists) ? media.playlists : [];
 
-  // 3) Filtres
+  // Filtres
   const state = { type:'all', year:'all', role:'all', playlist:'all' };
-
   if (filtersEl) {
     const years = [...new Set([...audio, ...video].map(i => i.year ?? '—'))]
       .filter(v => v !== undefined && v !== null)
       .sort((a,b)=> String(b).localeCompare(String(a)));
-
     filtersEl.innerHTML = `
       <label>Tipus
         <select id="fType">
@@ -65,7 +63,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         </select>
       </label>
     `;
-
     ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
       document.getElementById(id)?.addEventListener('change', ()=>{
         state.type     = document.getElementById('fType').value;
@@ -77,12 +74,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Helpers per enllaços
+  // Helpers d’enllaç
   const soundcloudPageUrl = (embedUrl) => {
-    // l'embed és "https://w.soundcloud.com/player/?url=ENCODED_ORIGINAL"
     try {
       const u = new URL(embedUrl);
-      const original = u.searchParams.get('url');  // ex: https://soundcloud.com/.../sets/...
+      const original = u.searchParams.get('url');
       if (original) return decodeURIComponent(original);
     } catch(e){}
     return null;
@@ -118,31 +114,27 @@ window.addEventListener('DOMContentLoaded', async () => {
       Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
     ].filter(Boolean).join(' · ');
 
-    // enllaç “font” (SoundCloud / YouTube) i player embegut
     let outLink = '';
-    let player = '';
-    if (it.embed || it.src) {
+    let player  = '';
+    if (it.embed || it.src) {                   // Àudio (SoundCloud / src local)
       const sc = it.embed ? soundcloudPageUrl(it.embed) : null;
       outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
-      player = it.embed
-        ? `<iframe width="100%" height="166" allowrc}</audio>`;
-    } else if (it.platform === 'YouTube' && it.video_id) {
+      player  = it.embed
+        ? `${it.embed}</iframe>`
+        : `${it.src}</audio>`;
+    } else if (it.platform === 'YouTube' && it.video_id) {  // Vídeo
       const watch = youtubeWatchUrl(it.video_id);
-      outLink = `<a class="btn" hrefTube</a>`;
-      const url = `https://www.youtube.com/embed/${it.video_id}`;
-      player = `<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-pictureil}`
-      : '';
+      outLink = `<a class="btn" href="${watch}"      const url = `https://www.youtube.com/embed/${it.video_id}`;
+      player  = `${url}</iframe>`;
+    }
 
-    return `
-      <article class="card">
+    const thumb = it.thumbnail ? `<img class="thumb" src="${it.thumbnail}" alt="minie class="card">
         ${thumb}
         <h3>${title}</h3>
         ${subtitle}
         <div class="meta">${meta}</div>
         ${player}
-        <div class="actions">
-          ${outLink}
-        </div>
+        <div class="actions">${outLink}</div>
         ${it.program_notes ? `<p class="notes">${it.program_notes}</p>` : ''}
       </article>
     `;
@@ -153,7 +145,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       ...audio.map(a => ({ ...a, type: 'audio' })),
       ...video.map(v => ({ ...v, type: 'video' }))
     ].filter(matches);
-
     lib.innerHTML = items.length
       ? items.map(card).join('')
       : `<p class="muted">No hi ha contingut que coincideixi amb els filtres.</p>`;
