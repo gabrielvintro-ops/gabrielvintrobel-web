@@ -1,21 +1,21 @@
-# Gabriel Vintró Bel — Web complet
+# Web funcional — Gabriel Vintró Bel
 
-## Instruccions per publicar a GitHub Pages
-
-1. Crea un repositori a GitHub (públic).
-2. Puja tots els fitxers d'aquest ZIP al repositori.
-3. Al terminal:
+## Com publicar (GitHub Pages)
+1. Copia aquests fitxers al teu repositori local (on tens el `.git`).
+2. Executa:
    ```bash
-   git init
    git add .
-   git commit -m "Versió final del web"
-   git branch -M main
-   git remote add origin https://github.com/<el_teu_usuari>/<nom_repositori>.git
-   git push -u origin main
+   git commit -m "Versió funcional (catàleg i filtres)"
+   git push
    ```
-4. A GitHub, ves a **Settings → Pages**.
-   - Source: Branch `main`, carpeta `/root`.
-5. Desa i espera uns segons. La teva web estarà disponible a:
-   ```
-   https://<el_teu_usuari>.github.io/<nom_repositori>/
-   ```
+3. Refresca la teva URL de GitHub Pages.
+
+## Arxius
+- index.html (Hero, Sobre mi, Catàleg)
+- works.html (catàleg a part)
+- styles.css (estils)
+- script.js (lògica: carregar media.json, filtres, renders)
+- media.json (catàleg audiovisual: àudios SoundCloud + vídeos YouTube + playlists)
+- assets/img (logo + fotos originals)
+- assets/audio, assets/scores (opcionales)
+- sitemap.xml, robots.txt

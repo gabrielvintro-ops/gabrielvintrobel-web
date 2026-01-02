@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://<el_teu_usuari>.github.io/sitemap.xml
