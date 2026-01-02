@@ -99,83 +99,155 @@
   };
   </script>
 
-  <!-- JS incrustat: render + filtres -->
-  <script>
-  (function(){
-    const $ = (s)=>document.querySelector(s);
-    const lib = $('#mediaLibrary'), filtersEl = $('#filters');
-    const audio = MEDIA.audio||[], video = MEDIA.video||[], playlists = MEDIA.playlists||[];
-    document.getElementById('year')?.append(new Date().getFullYear());
+  
+<!-- JS incrustat: render + filtres (VERSIÓ DOM, SENSE innerHTML) -->
+<script>
+(function(){
+  const $ = (s)=>document.querySelector(s);
+  const lib = $('#mediaLibrary'), filtersEl = $('#filters');
+  const audio = MEDIA.audio||[], video = MEDIA.video||[], playlists = MEDIA.playlists||[];
+  document.getElementById('year')?.append(new Date().getFullYear());
 
-    const state = { type:'all', year:'all', role:'all', playlist:'all' };
-    const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
-      .filter(v => v !== undefined && v !== null)
-      .sort((a,b)=> String(b).localeCompare(String(a)));
+  // Estat de filtres
+  const state = { type:'all', year:'all', role:'all', playlist:'all' };
+  const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
+    .filter(v => v !== undefined && v !== null)
+    .sort((a,b)=> String(b).localeCompare(String(a)));
 
-    filtersEl.innerHTML = `
-      <label>Tipus
-        <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
-      </label>
-      <label>Any
-        <select id="fYear"><option value="all">Tots</option>${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select>
-      </label>
-      <label>Rol
-        <select id="fRole"><option value="all">Tots</option><option value="composer">Compositor</option><option value="interpreter">Intèrpret</option></select>
-      </label>
-      <label>Playlist
-        <select id="fPlaylist"><option value="all">Cap</option>${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}</select>
-      </label>`;
+  // Dibuixa filtres (aquí sí fem innerHTML, però no afecta els reproductors)
+  filtersEl.innerHTML = `
+    <label>Tipus
+      <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
+    </label>
+    <label>Any
+      <select id="fYear"><option value="all">Tots</option>${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select>
+    </label>
+    <label>Rol
+      <select id="fRole"><option value="all">Tots</option><option value="composer">Compositor</option><option value="interpreter">Intèrpret</option></select>
+    </label>
+    <label>Playlist
+      <select id="fPlaylist"><option value="all">Cap</option>${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}</select>
+    </label>`;
 
-    ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
-      document.getElementById(id).addEventListener('change', ()=>{
-        state.type=document.getElementById('fType').value;
-        state.year=document.getElementById('fYear').value;
-        state.role=document.getElementById('fRole').value;
-        state.playlist=document.getElementById('fPlaylist').value;
-        render();
-      });
+  ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
+    document.getElementById(id).addEventListener('change', ()=>{
+      state.type=document.getElementById('fType').value;
+      state.year=document.getElementById('fYear').value;
+      state.role=document.getElementById('fRole').value;
+      state.playlist=document.getElementById('fPlaylist').value;
+      render();
     });
+  });
 
-    const scPage = (embedUrl)=>{ try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }catch(e){ return null; } };
-    const ytWatch = (id)=> `https://youtu.be/${id}`;
+  // Helpers
+  const scPage = (embedUrl)=>{ 
+    try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }
+    catch(e){ return null; }
+  };
+  const ytWatch = (id)=> `https://youtu.be/${id}`;
 
-    const matches = (it)=>{
-      if (state.type!=='all'){ const t = it.type || (it.embed||it.src ? 'audio':'video'); if (t!==state.type) return false; }
-      if (state.year!=='all'){ const y = it.year ?? '—'; if (String(y)!==String(state.year)) return false; }
-      if (state.role!=='all'){ const r = it.role || 'composer'; if (r!==state.role) return false; }
-      if (state.playlist!=='all'){ const inPl = playlists.some(pl=> pl.id===state.playlist && (pl.items||[]).includes(it.id)); if (!inPl) return false; }
-      return true;
-    };
+  const matches = (it)=>{
+    if (state.type!=='all'){ 
+      const t = it.type || (it.embed||it.src ? 'audio':'video'); 
+      if (t!==state.type) return false; 
+    }
+    if (state.year!=='all'){ 
+      const y = it.year ?? '—'; 
+      if (String(y)!==String(state.year)) return false; 
+    }
+    if (state.role!=='all'){ 
+      const r = it.role || 'composer'; 
+      if (r!==state.role) return false; 
+    }
+    if (state.playlist!=='all'){ 
+      const inPl = playlists.some(pl=> pl.id===state.playlist && (pl.items||[]).includes(it.id)); 
+      if (!inPl) return false; 
+    }
+    return true;
+  };
 
-    const card = (it)=>{
-      const title = it.title || '(Sense títol)';
-      const subtitle = it.subtitle ? `<div class="sub">${it.subtitle}</div>` : '';
-      const meta = [ it.year?`Any: ${it.year}`:'', it.role?`Rol: ${it.role}`:'', Array.isArray(it.tags)&&it.tags.length?`Tags: ${it.tags.join(', ')}`:'' ].filter(Boolean).join(' · ');
-      let outLink = '', player = '';
+  // ⚙️ CREA LES TARGETES AMB EL DOM (no innerHTML) — així els iframes es renderitzen sempre
+  function makeCard(it){
+    const art = document.createElement('article');
+    art.className = 'card';
 
-      if (it.embed || it.src){
-        const sc = it.embed ? scPage(it.embed) : null;
-        outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
-        player  = it.embed ? `${it.embed}</iframe>` : `${it.src}</audio>`;
-      } else if (it.platform==='YouTube' && it.video_id){
-        outLink = `${ytWatch(it.video_id)}Obrir a YouTube</a>`;
-        const url = `https://www.youtube.com/embed/${it.video_id}`;
-        player  = `${url}</iframe>`;
-      }
+    const h3 = document.createElement('h3');
+    h3.textContent = it.title || '(Sense títol)';
+    art.appendChild(h3);
 
-      return `<article class="card"><h3>${title}</h3>${subtitle}<div class="meta">${meta}</div>${player}<div class="actions">${outLink}</div></article>`;
-    };
-
-    function render(){
-      const items = [
-        ...audio.map(a=>({...a, type:'audio'})),
-        ...video.map(v=>({...v, type:'video'}))
-      ].filter(matches);
-      lib.innerHTML = items.length ? items.map(card).join('') : `<p class="muted">No hi ha contingut que coincideixi amb els filtres.</p>`;
+    if (it.subtitle){
+      const sub = document.createElement('div');
+      sub.className = 'sub';
+      sub.textContent = it.subtitle;
+      art.appendChild(sub);
     }
 
-    render();
-  })();
-  </script>
-</body>
-</html>
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = [
+      it.year ? `Any: ${it.year}` : '',
+      it.role ? `Rol: ${it.role}` : '',
+      Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
+    ].filter(Boolean).join(' · ');
+    art.appendChild(meta);
+
+    // Player
+    if (it.embed || it.src){
+      if (it.embed){
+        const iframe = document.createElement('iframe');
+        iframe.width = '100%';
+        iframe.height = '166';
+        iframe.setAttribute('allow','autoplay');
+        iframe.setAttribute('frameborder','0');
+        iframe.src = it.embed;
+        art.appendChild(iframe);
+      } else {
+        const audioEl = document.createElement('audio');
+        audioEl.controls = true;
+        audioEl.src = it.src;
+        art.appendChild(audioEl);
+      }
+      // Botó SoundCloud
+      const sc = it.embed ? scPage(it.embed) : null;
+      if (sc){
+        const actions = document.createElement('div'); actions.className='actions';
+        const a = document.createElement('a'); a.className='btn'; a.href=sc; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a SoundCloud';
+        actions.appendChild(a); art.appendChild(actions);
+      }
+    } else if (it.platform==='YouTube' && it.video_id){
+      const iframe = document.createElement('iframe');
+      iframe.width = '100%';
+      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen','');
+      iframe.src = `https://www.youtube.com/embed/${it.video_id}`;
+      art.appendChild(iframe);
+
+      const actions = document.createElement('div'); actions.className='actions';
+      const a = document.createElement('a'); a.className='btn'; a.href=`https://youtu.be/${it.video_id}`; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a YouTube';
+      actions.appendChild(a); art.appendChild(actions);
+    }
+
+    return art;
+  }
+
+  function render(){
+    lib.textContent = ''; // buida
+    const items = [
+      ...audio.map(a=>({...a, type:'audio'})),
+      ...video.map(v=>({...v, type:'video'}))
+    ].filter(matches);
+
+    if (!items.length){
+      const p = document.createElement('p');
+      p.className = 'muted';
+      p.textContent = 'No hi ha contingut que coincideixi amb els filtres.';
+      lib.appendChild(p); 
+      return;
+    }
+
+    items.forEach(it=> lib.appendChild(makeCard(it)));
+  }
+
+  render();
+})();
+</script>
