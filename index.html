@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -5,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gabriel Vintró Bel — Violinista i compositor</title>
   <meta name="description" content="Portafoli audiovisual de Gabriel Vintró Bel: obres, àudio, vídeo i notes de programa." />
-
-  <!-- ✳️ CSS INCRUSTAT per evitar rutes externes -->
   <style>
-    :root{ --bg:#ffffff; --text:#222; --muted:#666; --accent:#c99b4e; --surface:#fafafa; --border:#ddd; }
+    :root{ --bg:#ffffff; --text:#222; --muted:#666; --surface:#fafafa; --border:#ddd; }
     *{box-sizing:border-box}
     body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--text);background:var(--bg)}
     .hero{background:#222;color:#fff;text-align:center;padding:24px 16px}
     .hero h1{margin:0;font-size:28px}
     .subtitle{margin:6px 0 0;opacity:.85}
-    .logo-mark{height:22px;vertical-align:middle;margin-left:8px}
     .section{max-width:1000px;margin:24px auto;padding:0 16px}
     h2{margin:0 0 12px}
     .muted{color:var(--muted)}
@@ -22,11 +20,10 @@
     .filters label{font-size:14px;display:flex;flex-direction:column;gap:6px}
     select{padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:#fff}
     .library{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-    .card{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:14px}
+    .card{border:1px solid var(--border);background:#fafafa;border-radius:12px;padding:14px}
     .card h3{margin:6px 0;font-size:18px}
-    .card .sub{margin:-6px 0 6px;color:#555;font-style:italic}
-    .card .meta{font-size:13px;color:#666;margin-bottom:8px}
-    .card .thumb{width:100%;border-radius:10px;margin-bottom:10px;object-fit:cover;max-height:220px}
+    .sub{margin:-6px 0 6px;color:#555;font-style:italic}
+    .meta{font-size:13px;color:#666;margin-bottom:8px}
     .card iframe{width:100%;border:0;border-radius:8px;min-height:166px}
     .card audio{width:100%}
     .actions{margin-top:8px}
@@ -35,29 +32,26 @@
     .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:var(--muted)}
   </style>
 </head>
-
 <body>
   <header class="hero">
-    <h1>
-      Gabriel Vintró Bel
-      <!-- Si el logo no es veu, elimina la següent línia -->
-      assets/img/sticker om.PNG
-    </h1>
+    <h1>Gabriel Vintró Bel</h1>
     <p class="subtitle">Violinista · Compositor</p>
   </header>
 
   <main>
-    <!-- Sobre mi -->
     <section id="about" class="section">
       <h2>Sobre mi</h2>
-      <p id="bioShort" class="muted">Biografia breu aquí…</p>
+      <p id="bioShort" class="muted">
+        Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.
+      </p>
       <details>
         <summary>Llegir biografia extensa</summary>
-        <p id="bioLong" class="muted">Biografia llarga aquí…</p>
+        <p id="bioLong" class="muted">
+          Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.
+        </p>
       </details>
     </section>
 
-    <!-- Catàleg d’Àudio i Vídeo -->
     <section id="media" class="section">
       <h2>Catàleg d'Àudio i Vídeo</h2>
       <div id="filters" class="filters"></div>
@@ -69,7 +63,7 @@
     <small>© <span id="year"></span> Gabriel Vintró Bel</small>
   </footer>
 
-  <!-- ✳️ DADES INCRUSTADES: substitueix per altres entrades quan vulguis -->
+  <!-- DADES incrustades: tot el teu catàleg -->
   <script>
   const MEDIA = {
     "audio": [
@@ -105,127 +99,71 @@
   };
   </script>
 
-  <!-- ✳️ JS INCRUSTAT (sense rutes externes) -->
+  <!-- JS incrustat: render + filtres -->
   <script>
   (function(){
-    const $ = (sel) => document.querySelector(sel);
-    const bioShortEl = $('#bioShort'), bioLongEl = $('#bioLong');
-    const filtersEl = $('#filters'), lib = $('#mediaLibrary');
-    const playlists = Array.isArray(MEDIA.playlists) ? MEDIA.playlists : [];
-    const audio = Array.isArray(MEDIA.audio) ? MEDIA.audio : [];
-    const video = Array.isArray(MEDIA.video) ? MEDIA.video : [];
+    const $ = (s)=>document.querySelector(s);
+    const lib = $('#mediaLibrary'), filtersEl = $('#filters');
+    const audio = MEDIA.audio||[], video = MEDIA.video||[], playlists = MEDIA.playlists||[];
     document.getElementById('year')?.append(new Date().getFullYear());
 
-    // BIOS (canvia-ho quan vulguis)
-    if (bioShortEl) bioShortEl.textContent =
-      'Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.';
-    if (bioLongEl) bioLongEl.textContent =
-      'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.';
-
     const state = { type:'all', year:'all', role:'all', playlist:'all' };
+    const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
+      .filter(v => v !== undefined && v !== null)
+      .sort((a,b)=> String(b).localeCompare(String(a)));
 
-    // Filtres
-    if (filtersEl){
-      const years = [...new Set([...audio, ...video].map(i => i.year ?? '—'))]
-        .filter(v => v !== undefined && v !== null)
-        .sort((a,b)=> String(b).localeCompare(String(a)));
-      filtersEl.innerHTML = `
-        <label>Tipus
-          <select id="fType">
-            <option value="all">Tots</option>
-            <option value="audio">Àudio</option>
-            <option value="video">Vídeo</option>
-          </select>
-        </label>
-        <label>Any
-          <select id="fYear">
-            <option value="all">Tots</option>
-            ${years.map(y=>`<option value="${y}">${y}</option>`).join('')}
-          </select>
-        </label>
-        <label>Rol
-          <select id="fRole">
-            <option value="all">Tots</option>
-            <option value="composer">Compositor</option>
-            <option value="interpreter">Intèrpret</option>
-          </select>
-        </label>
-        <label>Playlist
-          <select id="fPlaylist">
-            <option value="all">Cap</option>
-            ${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}
-          </select>
-        </label>
-      `;
-      ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
-        document.getElementById(id)?.addEventListener('change', ()=>{
-          state.type=document.getElementById('fType').value;
-          state.year=document.getElementById('fYear').value;
-          state.role=document.getElementById('fRole').value;
-          state.playlist=document.getElementById('fPlaylist').value;
-          render();
-        });
+    filtersEl.innerHTML = `
+      <label>Tipus
+        <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
+      </label>
+      <label>Any
+        <select id="fYear"><option value="all">Tots</option>${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select>
+      </label>
+      <label>Rol
+        <select id="fRole"><option value="all">Tots</option><option value="composer">Compositor</option><option value="interpreter">Intèrpret</option></select>
+      </label>
+      <label>Playlist
+        <select id="fPlaylist"><option value="all">Cap</option>${playlists.map(p=>`<option value="${p.id}">${p.title}</option>`).join('')}</select>
+      </label>`;
+
+    ['fType','fYear','fRole','fPlaylist'].forEach(id=>{
+      document.getElementById(id).addEventListener('change', ()=>{
+        state.type=document.getElementById('fType').value;
+        state.year=document.getElementById('fYear').value;
+        state.role=document.getElementById('fRole').value;
+        state.playlist=document.getElementById('fPlaylist').value;
+        render();
       });
-    }
+    });
 
-    const scPage = (embedUrl)=>{
-      try{ const u = new URL(embedUrl); const original = u.searchParams.get('url'); if(original) return decodeURIComponent(original);}catch(e){}
-      return null;
-    };
+    const scPage = (embedUrl)=>{ try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }catch(e){ return null; } };
     const ytWatch = (id)=> `https://youtu.be/${id}`;
 
     const matches = (it)=>{
-      if (state.type!=='all'){
-        const t = it.type || (it.embed || it.src ? 'audio' : 'video');
-        if (t!==state.type) return false;
-      }
-      if (state.year!=='all'){
-        const y = it.year ?? '—';
-        if (String(y)!==String(state.year)) return false;
-      }
-      if (state.role!=='all'){
-        const r = it.role || 'composer';
-        if (r!==state.role) return false;
-      }
-      if (state.playlist!=='all'){
-        const inPl = playlists.some(pl => pl.id===state.playlist && (pl.items||[]).includes(it.id));
-        if (!inPl) return false;
-      }
+      if (state.type!=='all'){ const t = it.type || (it.embed||it.src ? 'audio':'video'); if (t!==state.type) return false; }
+      if (state.year!=='all'){ const y = it.year ?? '—'; if (String(y)!==String(state.year)) return false; }
+      if (state.role!=='all'){ const r = it.role || 'composer'; if (r!==state.role) return false; }
+      if (state.playlist!=='all'){ const inPl = playlists.some(pl=> pl.id===state.playlist && (pl.items||[]).includes(it.id)); if (!inPl) return false; }
       return true;
     };
 
     const card = (it)=>{
       const title = it.title || '(Sense títol)';
       const subtitle = it.subtitle ? `<div class="sub">${it.subtitle}</div>` : '';
-      const meta = [
-        it.year ? `Any: ${it.year}` : '',
-        it.role ? `Rol: ${it.role}` : '',
-        Array.isArray(it.tags)&&it.tags.length ? `Tags: ${it.tags.join(', ')}` : ''
-      ].filter(Boolean).join(' · ');
-
+      const meta = [ it.year?`Any: ${it.year}`:'', it.role?`Rol: ${it.role}`:'', Array.isArray(it.tags)&&it.tags.length?`Tags: ${it.tags.join(', ')}`:'' ].filter(Boolean).join(' · ');
       let outLink = '', player = '';
+
       if (it.embed || it.src){
         const sc = it.embed ? scPage(it.embed) : null;
         outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
-        player  = it.embed
-          ? `${it.embed}</iframe>`
-          : `${it.src}</audio>`;
+        player  = it.embed ? `${it.embed}</iframe>` : `${it.src}</audio>`;
       } else if (it.platform==='YouTube' && it.video_id){
         outLink = `${ytWatch(it.video_id)}Obrir a YouTube</a>`;
         const url = `https://www.youtube.com/embed/${it.video_id}`;
-        player = `<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;;
+        player  = `${url}</iframe>`;
+      }
 
-      return `
-        <article class="card">
-          ${thumb}
-          <h3>${title}</h3>
-          ${subtitle}
-          <div class="meta">${meta}</div>
-          ${player}
-          <div class="actions">${outLink}</div>
-          ${it.program_notes ? `<p class="notes">${it.program_notes}</p>` : ''}
-        </article>
-      `;
+      return `<article class="card"><h3>${title}</h3>${subtitle}<div class="meta">${meta}</div>${player}<div class="actions">${outLink}</div></article>`;
     };
 
     function render(){
