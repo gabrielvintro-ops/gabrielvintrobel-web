@@ -1,4 +1,3 @@
-
 // script.js — funcional: bios + filtres + enllaços + miniatures
 window.addEventListener('DOMContentLoaded', async () => {
   const $ = (sel) => document.querySelector(sel);
