@@ -1,3 +1,4 @@
+
 // script.js — funcional: bios + filtres + enllaços + miniatures
 window.addEventListener('DOMContentLoaded', async () => {
   const $ = (sel) => document.querySelector(sel);
@@ -10,11 +11,11 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Any al footer
   $('#year')?.append(new Date().getFullYear());
 
-  // BIOS (substitueix per la teva versió real quan vulguis)
+  // BIOS (substitueix per les teves definitives quan vulguis)
   if (bioShortEl) bioShortEl.textContent =
     'Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.';
   if (bioLongEl)  bioLongEl.textContent  =
-    'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria...';
+    'Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.';
 
   // Carrega media.json
   let media;
@@ -118,17 +119,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     let player  = '';
     if (it.embed || it.src) {                   // Àudio (SoundCloud / src local)
       const sc = it.embed ? soundcloudPageUrl(it.embed) : null;
-      outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
-      player  = it.embed
+      outLink = sc ? `<a class="btn" href="${sc}" target="_blanklayer  = it.embed
         ? `${it.embed}</iframe>`
         : `${it.src}</audio>`;
     } else if (it.platform === 'YouTube' && it.video_id) {  // Vídeo
       const watch = youtubeWatchUrl(it.video_id);
-      outLink = `<a class="btn" href="${watch}"      const url = `https://www.youtube.com/embed/${it.video_id}`;
+      outLink = `${watch}Obrir a YouTube</a>`;
+      const url = `https://www.youtube.com/embed/${it.video_id}`;
       player  = `${url}</iframe>`;
     }
 
-    const thumb = it.thumbnail ? `<img class="thumb" src="${it.thumbnail}" alt="minie class="card">
+    const thumb = it.thumbnail ? `<img class="thumb" src="${it.thumbnail}"   <article class="card">
         ${thumb}
         <h3>${title}</h3>
         ${subtitle}
