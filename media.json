@@ -192,9 +192,7 @@
       "id": "audio-piano",
       "title": "Piano — Audio",
       "description": "Selecció d’àudios per a piano.",
-      "items": [
-        "sc-piano-tercera-part"
-      ]
+      "items": ["sc-piano-tercera-part"]
     },
     {
       "id": "audio-scoring-film",
@@ -211,9 +209,7 @@
       "id": "audio-miscelania",
       "title": "Miscelània — Audio",
       "description": "Selecció d’àudios diversos (miscel·lània).",
-      "items": [
-        "sc-miscelania"
-      ]
+      "items": ["sc-miscelania"]
     }
   ]
 }
