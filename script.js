@@ -118,17 +118,18 @@ window.addEventListener('DOMContentLoaded', async () => {
     let player  = '';
     if (it.embed || it.src) {                   // Àudio (SoundCloud / src local)
       const sc = it.embed ? soundcloudPageUrl(it.embed) : null;
-      outLink = sc ? `<a class="btn" href="${sc}" target="_blanklayer  = it.embed
+      outLink = sc ? `${sc}Obrir a SoundCloud</a>` : '';
+      player  = it.embed
         ? `${it.embed}</iframe>`
         : `${it.src}</audio>`;
     } else if (it.platform === 'YouTube' && it.video_id) {  // Vídeo
       const watch = youtubeWatchUrl(it.video_id);
       outLink = `${watch}Obrir a YouTube</a>`;
       const url = `https://www.youtube.com/embed/${it.video_id}`;
-      player  = `${url}</iframe>`;
-    }
+      player  = `<iframe allow="accelerometer;const thumb = it.thumbnail ? `${it.thumbnail}` : '';
 
-    const thumb = it.thumbnail ? `<img class="thumb" src="${it.thumbnail}"   <article class="card">
+    return `
+      <article class="card">
         ${thumb}
         <h3>${title}</h3>
         ${subtitle}
