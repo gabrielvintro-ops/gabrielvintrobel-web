@@ -1,4 +1,4 @@
-# Gabriel Vintró Bel — Web
+# Gabriel Vintró Bel — Web complet
 
 ## Instruccions per publicar a GitHub Pages
 
@@ -8,7 +8,7 @@
    ```bash
    git init
    git add .
-   git commit -m "Primera versió del web"
+   git commit -m "Versió final del web"
    git branch -M main
    git remote add origin https://github.com/<el_teu_usuari>/<nom_repositori>.git
    git push -u origin main
@@ -19,15 +19,3 @@
    ```
    https://<el_teu_usuari>.github.io/<nom_repositori>/
    ```
-
-## Fitxers inclosos
-- index.html
-- works.html
-- styles.css
-- script.js
-- assets/img (imatges originals)
-- assets/audio (àudios)
-- assets/scores (partitures)
-- media.json (catàleg audiovisual)
-- sitemap.xml
-- robots.txt

@@ -1,5 +1,4 @@
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-header { background: #222; color: #fff; padding: 20px; text-align: center; }
-h1 { margin: 0; font-size: 2em; }
-p { margin: 0; }
+header.hero { background: #222; color: #fff; padding: 20px; text-align: center; }
+.logo-mark { height: 28px; vertical-align: middle; margin-left: 8px; }
 section { padding: 20px; }
