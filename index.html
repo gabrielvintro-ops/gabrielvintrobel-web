@@ -77,6 +77,45 @@
   height: 72px;
 }
 
+/* --- Ajustos per a logo de 84px i alineació perfecta --- */
+
+/* Mida del logo (via pseudoelement) */
+.brand::before {
+  width: 84px;     /* la mida que has triat */
+  height: 84px;
+}
+
+/* Alineació vertical del títol respecte el logo */
+.brand {
+  display: flex;
+  align-items: center;     /* centre vertical comuna entre logo i títol */
+  justify-content: center; /* centre horitzontal conjunt */
+  gap: 14px;               /* separació logo–títol una mica més gran */
+  flex-wrap: wrap;         /* permet embolcall en pantalles estretes */
+}
+
+/* El títol pren l'alçada del logo i centra el text verticalment */
+.brand .title {
+  display: flex;           /* per poder centrar el contingut dins */
+  align-items: center;     /* centre vertical del text */
+  min-height: 84px;        /* = altura del logo */
+  margin: 0;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Subtítol centrat i separat correctament */
+.subtitle {
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+/* (Opcional) Responsiu: en mòbil reduïm una mica el logo perquè no desquadri */
+@media (max-width: 480px) {
+  .brand::before { width: 64px; height: 64px; }
+  .brand .title { min-height: 64px; }
+}
+
   </style>
 </head>
 <body>
