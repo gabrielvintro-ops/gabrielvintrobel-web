@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
- 
-<!-- Favicon ICO (ruta absoluta a la Project Page) -->
-/gabrielvintrobel-web/favicon.ico
-
-<!-- (Opcional) PNG com a recurs alternatiu -->
-/gabrielvintrobel-web/assets/img/sticker%20om.PNG
+  <!-- Favicon del projecte (ruta absoluta a la Project Page) -->
+  /gabrielvintrobel-web/favicon.ico
+  /gabrielvintrobel-web/assets/img/sticker-om.png?v=1
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +16,7 @@
     .hero{background:#222;color:#fff;text-align:center;padding:24px 16px}
     .hero h1{margin:0;font-size:28px}
     .subtitle{margin:6px 0 0;opacity:.85}
+    .logo-mark{height:22px;vertical-align:middle;margin-left:8px}
     .section{max-width:1000px;margin:24px auto;padding:0 16px}
     h2{margin:0 0 12px}
     .muted{color:var(--muted)}
@@ -26,7 +24,7 @@
     .filters label{font-size:14px;display:flex;flex-direction:column;gap:6px}
     select{padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:#fff}
     .library{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-    .card{border:1px solid var(--border);background:#fafafa;border-radius:12px;padding:14px}
+    .card{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:14px}
     .card h3{margin:6px 0;font-size:18px}
     .sub{margin:-6px 0 6px;color:#555;font-style:italic}
     .meta{font-size:13px;color:#666;margin-bottom:8px}
@@ -35,29 +33,40 @@
     .actions{margin-top:8px}
     .btn{display:inline-block;padding:6px 10px;border-radius:8px;background:#222;color:#fff;text-decoration:none;font-size:13px}
     .btn:hover{background:#444}
-    .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:#muted}
+    .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
   <header class="hero">
-    <h1>Gabriel Vintró Bel</h1>
+    <h1>
+      Gabriel Vintró Bel
+      <!-- Logo petit i discret -->
+      assets/img/sticker-om.png?v=1
+    </h1>
     <p class="subtitle">Violinista · Compositor</p>
   </header>
 
   <main>
+    <!-- Sobre mi (bios integrades) -->
     <section id="about" class="section">
       <h2>Sobre mi</h2>
       <p id="bioShort" class="muted">
-        Violinista i compositor. La meva música explora el color de la corda, el diàleg tímbric i la connexió emocional amb el públic.
+        He repartit la meva vida professional entre la interpretació i la docència. Les meves composicions son el fruit d'aquesta experiència i de la necessitat de crear quelcom que aporti bellesa i emoció al meu món.<br><br>
+        Músic professional des dels 17 anys, vaig rebre una formació clàssica durant la meva època d'estudiant. Més tard he ampliat estudis i experiències en d'altres àmbits com la música antiga, improvisació, música electrònica i producció musical.<br><br>
+        Aquest conjunt, un tant eclèctic, d'interessos m'ha dut a experimentar el plaer de poder treballar amb tots ells alhora en la creació de les meves pròpies obres. Composicions de caràcters, estils i recursos diversos depenent de l'ambient o atmosfera que volen recrear.
       </p>
       <details>
         <summary>Llegir biografia extensa</summary>
         <p id="bioLong" class="muted">
-          Format a Barcelona, he combinat interpretació i docència al llarg de la meva trajectòria. Com a compositor, treballo entre el llenguatge contemporani i la tradició, amb projectes per a conjunt de corda, piano, electrònica i música per a imatge.
+          Vaig nèixer a Barcelona el 1969, any de manifestacions per la guerra de Vietnam, la lluita dels Black Panthers, els assassinats de Charles Manson, el 1er trasplantament de cor,  els 1ers assajos d’internet, el festival de Woodstock i pocs dies després que es trepitjés la lluna per primer cop. Aquest mateix any van nèixer Alberto Chicote, Marilyn Manson, DJ Tiësto i Anne Igartiburu… van morir Margarita Xirgu, Mies van der Rohe, Teodor Adorno i Jack Kerouac, lamento dir que tampoc va ser una bona anyada pel vi.<br><br>
+          Toco el violí per casualitat, els meus pares em van apuntar a música com activitat extraescolar. jo volia estudiar piano però era una despesa excessiva per la familia i vaig acabar tocant un violí que em va regalar el meu avi. Ell sovint em comprava lp’s de grans violinistes i els escoltavem junts, així vaig conèixer els concerts de Paganini, Beethoven, les sonates de Brahms, Cesar Frank, Bartok…<br><br>
+          Ja de petit m’agradava escriure petites composicions que interpretava amb una flauta de bec davant la desesperació dels meus pares al veure que no feia servir ni el violí ni el piano que ja per llavors havien comprat per la meva germana petita i que jo grapejava a tota hora.<br><br>
+          Tocant, tocant, vaig passar per la Joven Orquesta Nacional De España, Orquestra Simfònica del Vallès, Orquestra de Cambra de l’Empordà, Orquestra de Cambra Catalana, Orquesta de Cámara del Auditorio de Zaragoza, … i, vet aquí, que un dia vaig ser pare i vaig sentir la necessitat de no voltar tant. Vaig estar 10 anys com a professor especial de violí al Conservatori Professional de Música de Lleida al temps que tocava al Trio Florestan (encara podreu trobar alguna gravació al YouTube). Sempre m’han atret estils de música diferents i totes les maneres possibles d’interpretar-la i de crear a través del so. He fet música contemporània, música antiga (Liaison Ensemble, Antiqvvs Ensemble), Jazz, Flamenc, un postgrau en Música Antiga i Violí Barroc i un master de Tècnic Superior en Producció Musical. També m’he presentat a algun concurs de composició amb la mateixa sort que tenen els afortunats en l’amor… Ara treballo a l’Escoles Municipals de Música de Barcelona com a professor de violí i conjunts instrumentals, cada cop hi dedico més temps a la composició, toco al Duo Glier amb el meu amic Eduard Comalada, visc a Poble Sec i tinc la intenció de començar a fer esport. No vull acabar sense fer esment d’Ofelia Rodrigo, la meva 1a professora de violí i el meu amic d’infantesa Josep Cànovas, sense els quals jo no hagués estat músic ni de conya.
         </p>
       </details>
     </section>
 
+    <!-- Catàleg d’Àudio i Vídeo -->
     <section id="media" class="section">
       <h2>Catàleg d'Àudio i Vídeo</h2>
       <div id="filters" class="filters"></div>
@@ -87,79 +96,23 @@
     ],
 
     "video": [
-      {
-        "id": "yt-ShSuICU6Esw",
-        "title": "In Memoriam",
-        "platform": "YouTube",
-        "video_id": "ShSuICU6Esw",
-        "year": 2025,
-        "tags": ["String Ensemble"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-dNCnvGd3KTw",
-        "title": "T.O.C.",
-        "platform": "YouTube",
-        "video_id": "dNCnvGd3KTw",
-        "year": 2024,
-        "tags": ["String Ensemble", "Dance", "Scoring"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-p3EdiVq3DGY",
-        "title": "Film Credits",
-        "platform": "YouTube",
-        "video_id": "p3EdiVq3DGY",
-        "year": 2017,
-        "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-1hkSzPfbCZA",
-        "title": "Descobriment",
-        "platform": "YouTube",
-        "video_id": "1hkSzPfbCZA",
-        "year": 2025,
-        "tags": ["Symphonic", "Electronic", "Original Soundtrack", "Scoring", "Film"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-gOe2f8o_aDE",
-        "title": "Profundum Maris",
-        "platform": "YouTube",
-        "video_id": "gOe2f8o_aDE",
-        "year": 2023,
-        "tags": ["Scoring", "Film", "String Ensemble", "Original Soundtrack"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-ALpaGh8uO1A",
-        "title": "Remake",
-        "platform": "YouTube",
-        "video_id": "ALpaGh8uO1A",
-        "year": 2019,
-        "tags": ["Electronic", "Original Soundtrack", "Scoring", "Film", "Dance", "Piano"],
-        "role": "composer"
-      },
-      {
-        "id": "yt-24u0cKLxJfk",
-        "title": "Tot està bé",
-        "platform": "YouTube",
-        "video_id": "24u0cKLxJfk",
-        "year": 2017,
-        "tags": ["Scoring", "Original Soundtrack", "Dance", "Piano"],
-        "role": "composer"
-      },
+      { "id":"yt-ShSuICU6Esw","title":"In Memoriam","platform":"YouTube","video_id":"ShSuICU6Esw","year":2025,"tags":["String Ensemble"],"role":"composer" },
+      { "id":"yt-dNCnvGd3KTw","title":"T.O.C.","platform":"YouTube","video_id":"dNCnvGd3KTw","year":2024,"tags":["String Ensemble","Dance","Scoring"],"role":"composer" },
+      { "id":"yt-p3EdiVq3DGY","title":"Film Credits","platform":"YouTube","video_id":"p3EdiVq3DGY","year":2017,"tags":["Scoring","Film","String Ensemble","Original Soundtrack"],"role":"composer" },
+      { "id":"yt-1hkSzPfbCZA","title":"Descobriment","platform":"YouTube","video_id":"1hkSzPfbCZA","year":2025,"tags":["Symphonic","Electronic","Original Soundtrack","Scoring","Film"],"role":"composer" },
+      { "id":"yt-gOe2f8o_aDE","title":"Profundum Maris","platform":"YouTube","video_id":"gOe2f8o_aDE","year":2023,"tags":["Scoring","Film","String Ensemble","Original Soundtrack"],"role":"composer" },
+      { "id":"yt-ALpaGh8uO1A","title":"Remake","platform":"YouTube","video_id":"ALpaGh8uO1A","year":2019,"tags":["Electronic","Original Soundtrack","Scoring","Film","Dance","Piano"],"role":"composer" },
+      { "id":"yt-24u0cKLxJfk","title":"Tot està bé","platform":"YouTube","video_id":"24u0cKLxJfk","year":2017,"tags":["Scoring","Original Soundtrack","Dance","Piano"],"role":"composer" },
 
-      { "id":"yt-SCotlfzQwjk",  "platform":"YouTube", "video_id":"SCotlfzQwjk",  "role":"interpreter" },
-      { "id":"yt-tGIs4fO1bkU",  "platform":"YouTube", "video_id":"tGIs4fO1bkU",  "role":"interpreter" },
-      { "id":"yt-FgaGKU8g37U",  "platform":"YouTube", "video_id":"FgaGKU8g37U",  "role":"interpreter" },
-      { "id":"yt-1kA6J09VhJ0",  "platform":"YouTube", "video_id":"1kA6J09VhJ0",  "role":"interpreter" },
-      { "id":"yt-w1OutUPDCM0",  "platform":"YouTube", "video_id":"w1OutUPDCM0",  "role":"interpreter" },
-      { "id":"yt-ue4N8joZHoA",  "platform":"YouTube", "video_id":"ue4N8joZHoA",  "role":"interpreter" },
-      { "id":"yt-JfA3NRU4OcI",  "platform":"YouTube", "video_id":"JfA3NRU4OcI",  "role":"interpreter" },
-      { "id":"yt-zLogT099t4I",  "platform":"YouTube", "video_id":"zLogT099t4I",  "role":"interpreter" },
-      { "id":"yt-qEaLnddWubM",  "platform":"YouTube", "video_id":"qEaLnddWubM",  "role":"interpreter" }
+      { "id":"yt-SCotlfzQwjk","platform":"YouTube","video_id":"SCotlfzQwjk","role":"interpreter" },
+      { "id":"yt-tGIs4fO1bkU","platform":"YouTube","video_id":"tGIs4fO1bkU","role":"interpreter" },
+      { "id":"yt-FgaGKU8g37U","platform":"YouTube","video_id":"FgaGKU8g37U","role":"interpreter" },
+      { "id":"yt-1kA6J09VhJ0","platform":"YouTube","video_id":"1kA6J09VhJ0","role":"interpreter" },
+      { "id":"yt-w1OutUPDCM0","platform":"YouTube","video_id":"w1OutUPDCM0","role":"interpreter" },
+      { "id":"yt-ue4N8joZHoA","platform":"YouTube","video_id":"ue4N8joZHoA","role":"interpreter" },
+      { "id":"yt-JfA3NRU4OcI","platform":"YouTube","video_id":"JfA3NRU4OcI","role":"interpreter" },
+      { "id":"yt-zLogT099t4I","platform":"YouTube","video_id":"zLogT099t4I","role":"interpreter" },
+      { "id":"yt-qEaLnddWubM","platform":"YouTube","video_id":"qEaLnddWubM","role":"interpreter" }
     ],
 
     "playlists": [
@@ -182,15 +135,13 @@
     // Any al footer
     document.getElementById('year')?.append(new Date().getFullYear());
 
-    // BIOS (pots canviar textos directament a la secció "Sobre mi")
-
     // Estat filtres
     const state = { type:'all', year:'all', role:'all', playlist:'all' };
     const years = [...new Set([...audio, ...video].map(i=> i.year ?? '—'))]
       .filter(v => v !== undefined && v !== null)
       .sort((a,b)=> String(b).localeCompare(String(a)));
 
-    // Dibuixa filtres
+    // Filtres (innerHTML només per als controls; els reproductors es creen via DOM)
     filtersEl.innerHTML = `
       <label>Tipus
         <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
@@ -215,7 +166,6 @@
       });
     });
 
-    // Helpers d’enllaç
     const scPage = (embedUrl)=>{ 
       try{ const u=new URL(embedUrl); const o=u.searchParams.get('url'); return o?decodeURIComponent(o):null; }
       catch(e){ return null; }
@@ -230,24 +180,14 @@
       return true;
     };
 
-    // Crea targetes amb DOM (no innerHTML) perquè els iframes es pintin sempre
+    // Targeta amb DOM (evita que l’iframe es mostri com text)
     function makeCard(it){
-      const art = document.createElement('article');
-      art.className = 'card';
+      const art = document.createElement('article'); art.className = 'card';
 
-      const h3 = document.createElement('h3');
-      h3.textContent = it.title || '(Sense títol)';
-      art.appendChild(h3);
+      const h3 = document.createElement('h3'); h3.textContent = it.title || '(Sense títol)'; art.appendChild(h3);
+      if (it.subtitle){ const sub = document.createElement('div'); sub.className = 'sub'; sub.textContent = it.subtitle; art.appendChild(sub); }
 
-      if (it.subtitle){
-        const sub = document.createElement('div');
-        sub.className = 'sub';
-        sub.textContent = it.subtitle;
-        art.appendChild(sub);
-      }
-
-      const meta = document.createElement('div');
-      meta.className = 'meta';
+      const meta = document.createElement('div'); meta.className = 'meta';
       meta.textContent = [
         it.year ? `Any: ${it.year}` : '',
         it.role ? `Rol: ${it.role}` : '',
@@ -255,7 +195,7 @@
       ].filter(Boolean).join(' · ');
       art.appendChild(meta);
 
-      // Player
+      // Player + enllaç extern
       if (it.embed || it.src){
         if (it.embed){
           const iframe = document.createElement('iframe');
@@ -266,12 +206,8 @@
           iframe.src = it.embed;
           art.appendChild(iframe);
         } else {
-          const audioEl = document.createElement('audio');
-          audioEl.controls = true;
-          audioEl.src = it.src;
-          art.appendChild(audioEl);
+          const audioEl = document.createElement('audio'); audioEl.controls = true; audioEl.src = it.src; art.appendChild(audioEl);
         }
-        // Botó SoundCloud
         const sc = it.embed ? scPage(it.embed) : null;
         if (sc){
           const actions = document.createElement('div'); actions.className='actions';
@@ -287,7 +223,7 @@
         art.appendChild(iframe);
 
         const actions = document.createElement('div'); actions.className='actions';
-        const a = document.createElement('a'); a.className='btn'; a.href=`https://youtu.be/${it.video_id}`; a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a YouTube';
+        const a = document.createElement('a'); a.className='btn'; a.href=ytWatch(it.video_id); a.target='_blank'; a.rel='noopener'; a.textContent='Obrir a YouTube';
         actions.appendChild(a); art.appendChild(actions);
       }
 
@@ -295,17 +231,14 @@
     }
 
     function render(){
-      lib.textContent = ''; // buida
+      lib.textContent = '';
       const items = [
         ...audio.map(a=>({...a, type:'audio'})),
         ...video.map(v=>({...v, type:'video'}))
       ].filter(matches);
 
       if (!items.length){
-        const p = document.createElement('p');
-        p.className = 'muted';
-        p.textContent = 'No hi ha contingut que coincideixi amb els filtres.';
-        lib.appendChild(p);
+        const p = document.createElement('p'); p.className = 'muted'; p.textContent = 'No hi ha contingut que coincideixi amb els filtres.'; lib.appendChild(p);
         return;
       }
 
