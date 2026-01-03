@@ -9,39 +9,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gabriel Vintró Bel — Violinista i compositor</title>
   <meta name="description" content="Portafoli audiovisual de Gabriel Vintró Bel: obres, àudio, vídeo i notes de programa." />
+
   <style>
-    :root{ --bg:#ffffff; --text:#222; --muted:#666; --surface:#fafafa; --border:#ddd; }
+    :root{ --bg:#111; --text:#eee; --muted:#bbb; --surface:#1a1a1a; --border:#333; }
     *{box-sizing:border-box}
-    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--text);background:var(--bg)}
-    .hero{background:#222;color:#fff;text-align:center;padding:24px 16px}
-    .hero h1{margin:0;font-size:28px}
-    .subtitle{margin:6px 0 0;opacity:.85}
-    .logo-mark{height:22px;vertical-align:middle;margin-left:8px}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--text);background:#111}
+
+    /* HERO */
+    .hero{background:#222;color:#fff;padding:32px 16px}
+    .brand{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+    .brand .logo-mark{
+      height:28px;            /* mida petita i controlada */
+      width:auto;
+      vertical-align:middle;
+      filter: invert(1) brightness(1.6); /* el logo negre es veu clar sobre fons fosc */
+    }
+    .brand .title{font-size:28px;margin:0;line-height:1}
+    .subtitle{margin:8px 0 0;opacity:.9;text-align:center}
+
+    /* LAYOUT seccions */
     .section{max-width:1000px;margin:24px auto;padding:0 16px}
     h2{margin:0 0 12px}
     .muted{color:var(--muted)}
+
+    /* Filtres i targetes (catàleg) */
     .filters{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 16px}
     .filters label{font-size:14px;display:flex;flex-direction:column;gap:6px}
-    select{padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:#fff}
+    select{padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:#111;color:#eee}
     .library{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
     .card{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:14px}
     .card h3{margin:6px 0;font-size:18px}
-    .sub{margin:-6px 0 6px;color:#555;font-style:italic}
-    .meta{font-size:13px;color:#666;margin-bottom:8px}
-    .card iframe{width:100%;border:0;border-radius:8px;min-height:166px}
+    .sub{margin:-6px 0 6px;color:#ccc;font-style:italic}
+    .meta{font-size:13px;color:#bbb;margin-bottom:8px}
+    .card iframe{width:100%;border:0;border-radius:8px;min-height:166px;background:#000}
     .card audio{width:100%}
     .actions{margin-top:8px}
-    .btn{display:inline-block;padding:6px 10px;border-radius:8px;background:#222;color:#fff;text-decoration:none;font-size:13px}
-    .btn:hover{background:#444}
+    .btn{display:inline-block;padding:6px 10px;border-radius:8px;background:#444;color:#fff;text-decoration:none;font-size:13px}
+    .btn:hover{background:#666}
     .footer{border-top:1px solid var(--border);padding:16px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
   <header class="hero">
-    <h1>
-      Gabriel Vintró Bel
-      <img src="/gabrielvintrobel-web/assets/img/sticker-om.png?v=1" alt="Logo"
-    </h1>
+    <div class="brand">
+      /gabrielvintrobel-web/assets/img/sticker-om.png?v=1
+      <h1 class="title">Gabriel Vintró Bel</h1>
+    </div>
     <p class="subtitle">Violinista · Compositor</p>
   </header>
 
@@ -140,7 +153,7 @@
       .filter(v => v !== undefined && v !== null)
       .sort((a,b)=> String(b).localeCompare(String(a)));
 
-    // Filtres (innerHTML només per als controls; els reproductors es creen via DOM)
+    // Filtres (innerHTML per als controls; els players es creen via DOM)
     filtersEl.innerHTML = `
       <label>Tipus
         <select id="fType"><option value="all">Tots</option><option value="audio">Àudio</option><option value="video">Vídeo</option></select>
@@ -179,7 +192,7 @@
       return true;
     };
 
-    // Targeta amb DOM (evita que l’iframe es mostri com text)
+    // Targeta amb DOM (iframe/audio sense innerHTML)
     function makeCard(it){
       const art = document.createElement('article'); art.className = 'card';
 
