@@ -116,6 +116,47 @@
   .brand .title { min-height: 64px; }
 }
 
+/* --- Override d'alineació per a logo de 84px + títol centrat --- */
+/* Aquestes regles van al FINAL del <style> perquè tinguin prioritat. */
+
+.brand{
+  display: flex !important;
+  align-items: center !important;     /* centre vertical del conjunt */
+  justify-content: center !important; /* centre horitzontal */
+  gap: 14px !important;               /* espai entre logo i títol */
+  flex-wrap: wrap !important;
+}
+
+/* Logo via ::before, mida 84px. 
+   Si el veus 1–3 px “desquadradet”, ajusta transform: translateY(+/-1..3px) */
+.brand::before{
+  content: "" !important;
+  display: block !important;
+  width: 84px !important;
+  height: 84px !important;
+  background: url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1") no-repeat center / contain !important;
+  filter: invert(1) brightness(1.6) !important;
+  margin: 0 !important;
+  /* microajust vertical (prova 0, després +1px o -1px fins que et quedi al teu gust) */
+  transform: translateY(1px);
+}
+
+/* El títol adopta l'alçada del logo i centra el text en vertical */
+.brand .title{
+  display: flex !important;
+  align-items: center !important;   /* centra el text dins el bloc del títol */
+  min-height: 84px !important;      /* = alçada del logo */
+  margin: 0 !important;
+  line-height: 1.05 !important;     /* lleugerament més compacte */
+  text-align: center !important;
+}
+
+/* Subtítol ben centrat i amb una separació suau */
+.subtitle{
+  margin-top: 8px !important;
+  text-align: center !important;
+}
+
   </style>
 </head>
 <body>
