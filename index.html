@@ -10,6 +10,7 @@
   <meta name="description" content="Portafoli audiovisual de Gabriel Vintró Bel: obres, àudio, vídeo i notes de programa." />
 
  
+
 <style>
   :root {
     --bg: #111;
@@ -19,9 +20,7 @@
     --border: #333;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
@@ -38,43 +37,51 @@
     text-align: center;
   }
 
-  /* Contenidor del logo i títol */
-  .brand {
-    display: flex;
-    align-items: center;       /* centra verticalment logo i títol */
-    justify-content: center;   /* centra horitzontalment */
-    gap: 16px;                 /* separació entre logo i títol */
-    flex-wrap: wrap;
+  /* ====== CAPÇALERA: logo 72px + títol 30px + subtítol centrat ====== */
+
+  /* Contenidor del logo i del títol */
+  .brand{
+    display:flex;
+    align-items:center;       /* centre vertical del conjunt logo+títol */
+    justify-content:center;   /* centre horitzontal */
+    gap:12px;                 /* separació logo–títol (compacte) */
+    flex-wrap:wrap;
   }
 
-  /* Logo via pseudoelement */
-  .brand::before {
-    content: "";
-    display: inline-block;
-    width: 84px;               /* mida del logo */
-    height: 84px;
-    background: url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1") no-repeat center / contain;
-    filter: invert(1) brightness(1.6); /* fa el logo clar sobre fons fosc */
-    margin: 0;
+  /* Logo via pseudoelement (no fem servir <img> en HTML) */
+  .brand::before{
+    content:"";
+    display:block;
+    width:72px;               /* mida del logo */
+    height:72px;
+    background:url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1")
+               no-repeat center / contain;
+    /* El logo és fosc i el header és fosc → donem contrast */
+    filter:invert(1) brightness(1.6);
+    margin:0;
+    transform:translateY(0px);  /* si cal, prova -1px o +1px per quadrar a ull */
   }
 
-  /* Títol */
-  .brand .title {
-    font-size: 32px;           /* mida del títol */
-    margin: 0;
-    line-height: 1.1;
-    display: flex;
-    align-items: center;       /* centra el text dins el bloc */
-    min-height: 84px;          /* igual a l'alçada del logo */
-    text-align: center;
+  /* Títol: alçada sincronitzada amb el logo i text centrat verticalment */
+  .brand .title{
+    display:flex;
+    align-items:center;
+    min-height:72px;          /* = alçada del logo */
+    margin:0;
+    line-height:1.1;
+    text-align:center;
+    font-size:30px;           /* mida del títol */
+    transform:translateY(0px); /* opcional (−1px / +1px) */
   }
 
-  /* Subtítol */
-  .subtitle {
-    margin-top: 8px;
-    opacity: .9;
-    text-align: center;
+  /* Subtítol centrat i separat */
+  .subtitle{
+    margin-top:8px;
+    text-align:center;
+    opacity:.9;
   }
+
+  /* ====== FI CAPÇALERA ====== */
 
   /* Seccions */
   .section {
@@ -83,13 +90,9 @@
     padding: 0 16px;
   }
 
-  h2 {
-    margin: 0 0 12px;
-  }
+  h2 { margin: 0 0 12px; }
 
-  .muted {
-    color: var(--muted);
-  }
+  .muted { color: var(--muted); }
 
   /* Filtres i targetes (catàleg) */
   .filters {
@@ -127,22 +130,11 @@
     padding: 14px;
   }
 
-  .card h3 {
-    margin: 6px 0;
-    font-size: 18px;
-  }
+  .card h3 { margin: 6px 0; font-size: 18px; }
 
-  .sub {
-    margin: -6px 0 6px;
-    color: #ccc;
-    font-style: italic;
-  }
+  .sub { margin: -6px 0 6px; color: #ccc; font-style: italic; }
 
-  .meta {
-    font-size: 13px;
-    color: #bbb;
-    margin-bottom: 8px;
-  }
+  .meta { font-size: 13px; color: #bbb; margin-bottom: 8px; }
 
   .card iframe {
     width: 100%;
@@ -152,13 +144,9 @@
     background: #000;
   }
 
-  .card audio {
-    width: 100%;
-  }
+  .card audio { width: 100%; }
 
-  .actions {
-    margin-top: 8px;
-  }
+  .actions { margin-top: 8px; }
 
   .btn {
     display: inline-block;
@@ -169,10 +157,7 @@
     text-decoration: none;
     font-size: 13px;
   }
-
-  .btn:hover {
-    background: #666;
-  }
+  .btn:hover { background: #666; }
 
   .footer {
     border-top: 1px solid var(--border);
@@ -181,79 +166,13 @@
     color: var(--muted);
   }
 
-  /* Responsiu (opcional) */
-  @media (max-width: 480px) {
-    .brand::before {
-      width: 64px;
-      height: 64px;
-    }
-    .brand .title {
-      min-height: 64px;
-      font-size: 28px;
-    }
+  /* Responsiu (opcional): una mica més petit en pantalles estretes */
+  @media (max-width:480px){
+    .brand::before{ width:64px; height:64px; }
+    .brand .title{ min-height:64px; font-size:28px; }
   }
-  
-/* ====== CAPÇALERA: logo 72px + títol 30px + subtítol centrat ====== */
-
-/* Contenidor del logo i del títol */
-.brand{
-  display:flex;
-  align-items:center;      /* centre vertical del conjunt logo+títol */
-  justify-content:center;  /* centre horitzontal */
-  gap:12px;                /* separació entre logo i títol (compacte) */
-  flex-wrap:wrap;
-}
-
-/* Logo via pseudoelement (no fem servir <img> en HTML) */
-.brand::before{
-  content:"";
-  display:block;
-  width:72px;              /* mida del logo (72 px) */
-  height:72px;
-  background:url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1")
-             no-repeat center / contain;
-  /* El logo original és fosc i el header és fosc → li donem contrast */
-  filter:invert(1) brightness(1.6);
-  margin:0;
-  transform:translateY(0px); /* si cal, prova -1px o +1px per quadrar a ull */
-}
-
-/* Títol: alçada sincronitzada amb el logo i text centrat verticalment */
-.brand .title{
-  display:flex;
-  align-items:center;
-  min-height:72px;         /* = alçada del logo */
-  margin:0;
-  line-height:1.1;
-  text-align:center;
-  font-size:30px;          /* mida del títol (30 px) */
-  transform:translateY(0px); /* opcional nudge del títol (−1px / +1px) */
-}
-
-/* Subtítol centrat i separat */
-.subtitle{
-  margin-top:8px;
-  text-align:center;
-  opacity:.9;
-}
-
-/* HERO (fons i padding) - no toques catàleg ni JS */
-.hero{
-  background:#222;
-  color:#fff;
-  padding:32px 16px;
-  text-align:center;
-}
-
-/* ====== FI CAPÇALERA ====== */
-
-/* Responsiu (opcional): una mica més petit en pantalles estretes */
-@media (max-width:480px){
-  .brand::before{ width:64px; height:64px; }
-  .brand .title{ min-height:64px; font-size:28px; }
-}
-
 </style>
+
 
 </head>
 <body>
