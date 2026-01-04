@@ -192,6 +192,67 @@
       font-size: 28px;
     }
   }
+  
+/* ====== CAPÇALERA: logo 72px + títol 30px + subtítol centrat ====== */
+
+/* Contenidor del logo i del títol */
+.brand{
+  display:flex;
+  align-items:center;      /* centre vertical del conjunt logo+títol */
+  justify-content:center;  /* centre horitzontal */
+  gap:12px;                /* separació entre logo i títol (compacte) */
+  flex-wrap:wrap;
+}
+
+/* Logo via pseudoelement (no fem servir <img> en HTML) */
+.brand::before{
+  content:"";
+  display:block;
+  width:72px;              /* mida del logo (72 px) */
+  height:72px;
+  background:url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1")
+             no-repeat center / contain;
+  /* El logo original és fosc i el header és fosc → li donem contrast */
+  filter:invert(1) brightness(1.6);
+  margin:0;
+  transform:translateY(0px); /* si cal, prova -1px o +1px per quadrar a ull */
+}
+
+/* Títol: alçada sincronitzada amb el logo i text centrat verticalment */
+.brand .title{
+  display:flex;
+  align-items:center;
+  min-height:72px;         /* = alçada del logo */
+  margin:0;
+  line-height:1.1;
+  text-align:center;
+  font-size:30px;          /* mida del títol (30 px) */
+  transform:translateY(0px); /* opcional nudge del títol (−1px / +1px) */
+}
+
+/* Subtítol centrat i separat */
+.subtitle{
+  margin-top:8px;
+  text-align:center;
+  opacity:.9;
+}
+
+/* HERO (fons i padding) - no toques catàleg ni JS */
+.hero{
+  background:#222;
+  color:#fff;
+  padding:32px 16px;
+  text-align:center;
+}
+
+/* ====== FI CAPÇALERA ====== */
+
+/* Responsiu (opcional): una mica més petit en pantalles estretes */
+@media (max-width:480px){
+  .brand::before{ width:64px; height:64px; }
+  .brand .title{ min-height:64px; font-size:28px; }
+}
+
 </style>
 
 </head>
