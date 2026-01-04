@@ -508,5 +508,46 @@
 
 </style>
 
+<style id="brand-fix-final">
+  /* --- Override final per a la capçalera (logo 72px + títol 30px) --- */
+  header.hero .brand{
+    display:flex !important;
+    align-items:center !important;      /* centre vertical logo+títol */
+    justify-content:center !important;  /* centre horitzontal */
+    gap:12px !important;
+    flex-wrap:wrap !important;
+  }
+
+  /* Logo via pseudoelement (no fem servir <img> en HTML) */
+  header.hero .brand::before{
+    content:"" !important;
+    display:block !important;
+    width:72px !important;
+    height:72px !important;
+    background:url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1")
+               no-repeat center / contain !important;
+    filter:invert(1) brightness(1.6) !important;  /* contrast sobre fons fosc */
+    margin:0 !important;
+    transform:translateY(0) !important;           /* si cal: -1px o +1px */
+  }
+
+  /* Títol amb la mateixa alçada del logo i text centrat verticalment */
+  header.hero .brand .title{
+    display:flex !important;
+    align-items:center !important;
+    min-height:72px !important;      /* = alçada del logo */
+    margin:0 !important;
+    line-height:1.1 !important;
+    text-align:center !important;
+    font-size:30px !important;
+  }
+
+  /* Subtítol centrat */
+  header.hero .subtitle{
+    margin-top:8px !important;
+    text-align:center !important;
+  }
+</style>
+
 </body>
 </html>
