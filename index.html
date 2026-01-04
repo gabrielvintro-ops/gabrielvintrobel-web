@@ -472,6 +472,23 @@
     header.hero .brand::before{ width:64px !important; height:64px !important; }
     header.hero .brand .title{ min-height:64px !important; }
   }
+  
+.brand {
+  display: flex;
+  align-items: center;      /* centra verticalment logo i títol */
+  justify-content: center;  /* centra horitzontalment */
+  gap: 16px;                /* separació entre logo i títol */
+}
+
+.brand::before {
+  width: 84px;
+  height: 84px;
+}
+
+.brand .title {
+  font-size: 32px;          /* opcional: fa el títol més gran */
+}
+
 </style>
 
 </body>
