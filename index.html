@@ -11,6 +11,7 @@
 
  
 
+
 <style>
   :root {
     --bg: #111;
@@ -37,51 +38,43 @@
     text-align: center;
   }
 
-  /* ====== CAPÇALERA: logo 72px + títol 30px + subtítol centrat ====== */
-
-  /* Contenidor del logo i del títol */
-  .brand{
-    display:flex;
-    align-items:center;       /* centre vertical del conjunt logo+títol */
-    justify-content:center;   /* centre horitzontal */
-    gap:12px;                 /* separació logo–títol (compacte) */
-    flex-wrap:wrap;
+  /* Contenidor del logo i títol */
+  .brand {
+    display: flex;
+    align-items: center;       /* centre vertical del conjunt logo+títol */
+    justify-content: center;   /* centre horitzontal */
+    gap: 12px;                 /* separació logo–títol */
+    flex-wrap: wrap;
   }
 
-  /* Logo via pseudoelement (no fem servir <img> en HTML) */
-  .brand::before{
-    content:"";
-    display:block;
-    width:72px;               /* mida del logo */
-    height:72px;
-    background:url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1")
-               no-repeat center / contain;
-    /* El logo és fosc i el header és fosc → donem contrast */
-    filter:invert(1) brightness(1.6);
-    margin:0;
-    transform:translateY(0px);  /* si cal, prova -1px o +1px per quadrar a ull */
+  /* Logo via pseudoelement */
+  .brand::before {
+    content: "";
+    display: block;
+    width: 72px;               /* mida del logo */
+    height: 72px;
+    background: url("/gabrielvintrobel-web/assets/img/sticker-om.png?v=1") no-repeat center / contain;
+    filter: invert(1) brightness(1.6); /* contrast sobre fons fosc */
+    margin: 0;
   }
 
-  /* Títol: alçada sincronitzada amb el logo i text centrat verticalment */
-  .brand .title{
-    display:flex;
-    align-items:center;
-    min-height:72px;          /* = alçada del logo */
-    margin:0;
-    line-height:1.1;
-    text-align:center;
-    font-size:30px;           /* mida del títol */
-    transform:translateY(0px); /* opcional (−1px / +1px) */
+  /* Títol */
+  .brand .title {
+    font-size: 30px;           /* mida del títol */
+    margin: 0;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;       /* centra el text dins el bloc */
+    min-height: 72px;          /* igual a l'alçada del logo */
+    text-align: center;
   }
 
-  /* Subtítol centrat i separat */
-  .subtitle{
-    margin-top:8px;
-    text-align:center;
-    opacity:.9;
+  /* Subtítol */
+  .subtitle {
+    margin-top: 8px;
+    opacity: .9;
+    text-align: center;
   }
-
-  /* ====== FI CAPÇALERA ====== */
 
   /* Seccions */
   .section {
@@ -166,10 +159,16 @@
     color: var(--muted);
   }
 
-  /* Responsiu (opcional): una mica més petit en pantalles estretes */
-  @media (max-width:480px){
-    .brand::before{ width:64px; height:64px; }
-    .brand .title{ min-height:64px; font-size:28px; }
+  /* Responsiu (opcional) */
+  @media (max-width: 480px) {
+    .brand::before {
+      width: 64px;
+      height: 64px;
+    }
+    .brand .title {
+      min-height: 64px;
+      font-size: 28px;
+    }
   }
 </style>
 
